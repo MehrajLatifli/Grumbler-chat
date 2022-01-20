@@ -26,46 +26,52 @@ namespace FileHelper_ClassLibrary
             try
             {
                 Task.Run(() => {
-                using (var networkStream = new NetworkStream(socket))
-                {
-                    var header = new byte[4];
-                    var bytesLeft = 4;
-                    var offset = 0;
-
-                    while (bytesLeft > 0)
+                    using (var networkStream = new NetworkStream(socket))
                     {
-                        var bytesRead = networkStream.Read(header, offset, bytesLeft);
-                        offset += bytesRead;
-                        bytesLeft -= bytesRead;
+                        try
+                        {
+                            var header = new byte[4];
+                            var bytesLeft = 4;
+                            var offset = 0;
+
+                            while (bytesLeft > 0)
+                            {
+                                var bytesRead = networkStream.Read(header, offset, bytesLeft);
+                                offset += bytesRead;
+                                bytesLeft -= bytesRead;
+                            }
+
+                            bytesLeft = BitConverter.ToInt32(header, 0);
+                            offset = 0;
+                            var fileContents = new byte[bytesLeft];
+
+                            while (bytesLeft > 0)
+                            {
+                                var bytesRead = networkStream.Read(fileContents, offset, bytesLeft);
+                                offset += bytesRead;
+                                bytesLeft -= bytesRead;
+                            }
+
+
+
+
+
+                            //File.WriteAllBytes($"{Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\"))}", fileContents);
+
+                            File.WriteAllBytes($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(filename)}", fileContents);
+
+
+                            //File.WriteAllBytes($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{guid1}{Path.GetExtension(filename)}", fileContents);
+
+                            //   File.WriteAllBytes($"../../DataServer/{filename} {Path.GetExtension(filename)}", fileContents);
+
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+
                     }
-
-                    bytesLeft = BitConverter.ToInt32(header, 0);
-                    offset = 0;
-                    var fileContents = new byte[bytesLeft];
-
-                    while (bytesLeft > 0)
-                    {
-                        var bytesRead = networkStream.Read(fileContents, offset, bytesLeft);
-                        offset += bytesRead;
-                        bytesLeft -= bytesRead;
-                    }
-
-
-
-
-
-                    //File.WriteAllBytes($"{Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\"))}", fileContents);
-
-                    File.WriteAllBytes($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(filename)}", fileContents);
-
-
-                    //File.WriteAllBytes($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{guid1}{Path.GetExtension(filename)}", fileContents);
-
-                    //   File.WriteAllBytes($"../../DataServer/{filename} {Path.GetExtension(filename)}", fileContents);
-
-
-
-                }
 
                 });
 
@@ -86,34 +92,41 @@ namespace FileHelper_ClassLibrary
                 {
                     using (var networkStream = new NetworkStream(socket))
                     {
-                        var header = new byte[4];
-                        var bytesLeft = 4;
-                        var offset = 0;
-
-                        while (bytesLeft > 0)
+                        try
                         {
-                            var bytesRead = networkStream.Read(header, offset, bytesLeft);
-                            offset += bytesRead;
-                            bytesLeft -= bytesRead;
+                            var header = new byte[4];
+                            var bytesLeft = 4;
+                            var offset = 0;
+
+                            while (bytesLeft > 0)
+                            {
+                                var bytesRead = networkStream.Read(header, offset, bytesLeft);
+                                offset += bytesRead;
+                                bytesLeft -= bytesRead;
+                            }
+
+                            bytesLeft = BitConverter.ToInt32(header, 0);
+                            offset = 0;
+                            var fileContents = new byte[bytesLeft];
+
+                            while (bytesLeft > 0)
+                            {
+                                var bytesRead = networkStream.Read(fileContents, offset, bytesLeft);
+                                offset += bytesRead;
+                                bytesLeft -= bytesRead;
+                            }
+
+
+
+                            File.WriteAllBytes($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(filename)}", fileContents);
+
+
+
                         }
-
-                        bytesLeft = BitConverter.ToInt32(header, 0);
-                        offset = 0;
-                        var fileContents = new byte[bytesLeft];
-
-                        while (bytesLeft > 0)
+                        catch (Exception)
                         {
-                            var bytesRead = networkStream.Read(fileContents, offset, bytesLeft);
-                            offset += bytesRead;
-                            bytesLeft -= bytesRead;
+
                         }
-
-
-
-                        File.WriteAllBytes($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(filename)}", fileContents);
-
-
-
 
                     }
                 });
