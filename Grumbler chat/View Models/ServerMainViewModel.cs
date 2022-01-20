@@ -611,47 +611,7 @@ namespace Grumbler_chat_Server.View_Models
                 socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
                 serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
 
-                //using (var networkStream = new NetworkStream(socket))
-                //using (var binaryReader = new BinaryReader(networkStream))
-                //using (FileStream fs = new FileStream(v, FileMode.OpenOrCreate))
-                //{
-
-                //    data = new byte[fs.Length];
-                //    fs.Write(data, 0, data.Length);
-                //    socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
-                //    serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
-
-                //    fs.Flush();
-                //    fs.Close();
-                //    fs.Dispose();
-
-
-                //}
-
-
-                //////////////////////////////////////////
-
-
-                //string[] array = v.Split(new string[] { " : " }, 2, StringSplitOptions.RemoveEmptyEntries);
-
-                //string firstItem = array[1];
-
-                //using (var networkStream = new NetworkStream(socket))
-                //using (FileStream fs = new FileStream(firstItem, FileMode.Open, FileAccess.Read))
-                //{
-                //    long fileSize = fs.Length;
-                //    long sum = 0;   //sum here is the total of sent bytes.
-                //    int count = 0;
-                //    data = new byte[1024];  //8Kb buffer .. you might use a smaller size also.
-                //    while (sum < fileSize)
-                //    {
-                //        count = fs.Read(data, 0, data.Length);
-                //        networkStream.Write(data, 0, count);
-                //        sum += count;
-                //    }
-                //    networkStream.Flush();
-                //}
-
+               
 
 
                 string[] array = v.Split(new string[] { " : " }, 2, StringSplitOptions.RemoveEmptyEntries);
@@ -889,7 +849,7 @@ namespace Grumbler_chat_Server.View_Models
 
                                     string remainingItems = string.Join(" ", array.Skip(1).ToList());
 
-                                    //    System.Windows.MessageBox.Show($"{firstItem} _ {cli} -- {remainingItems} ");
+                          
 
                                     try
                                     {
@@ -941,7 +901,7 @@ namespace Grumbler_chat_Server.View_Models
 
                                                 border.Child = grid;
 
-                                                //System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
+                           
 
 
                                                 ServerMainWindows.HistoryListbox.Items.Add(border);
@@ -955,7 +915,6 @@ namespace Grumbler_chat_Server.View_Models
                                         if (Path.HasExtension(remainingItems))
                                         {
 
-                                            //  System.Windows.MessageBox.Show($"{firstItem} _ {cli} -- {remainingItems} ");
 
 
 
@@ -1107,11 +1066,6 @@ namespace Grumbler_chat_Server.View_Models
                                                 }
 
 
-
-                                                //System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
-
-
-
                                                 border.Margin = new Thickness(5, 5, 5, 5);
                                                 border.BorderBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 113, 88, 190));
                                                 border.BorderThickness = new Thickness(10);
@@ -1219,12 +1173,6 @@ namespace Grumbler_chat_Server.View_Models
 
             }
 
-
-
-            //int ind__ = (mesaj.IndexOf("*") + 1);
-            //string separate = mesaj.Substring(ind__, mesaj.Length - ind__);
-            //string mess = mesaj.Substring(0, (ind__ - 1));
-            //string send = separate + ": " + mess;
 
 
             for (int j = 0; j < ClientSockets.Count; j++)

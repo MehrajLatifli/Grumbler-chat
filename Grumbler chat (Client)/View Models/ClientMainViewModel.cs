@@ -858,7 +858,6 @@ namespace Grumbler_chat__Client_.View_Models
 
                                     border.Child = grid;
 
-                                    //System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
 
 
                                     ClientMainWindows.HistoryListbox.Items.Add(border);
@@ -872,7 +871,6 @@ namespace Grumbler_chat__Client_.View_Models
                             if (Path.HasExtension(remainingItems))
                             {
 
-                                //   System.Windows.MessageBox.Show($"{ Path.GetExtension(remainingItems)}");
 
 
 
@@ -999,53 +997,7 @@ namespace Grumbler_chat__Client_.View_Models
 
                                     int bufferSize = 10002400;
 
-                                    //using (var networkStream = new NetworkStream(socket))
-                                    //using (var binaryReader = new BinaryReader(networkStream))
-                                    //using (FileStream fileStream = new FileStream(savefile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite, bufferSize, true))
-                                    ////using (FileStream fs = File.Open(<file-path>, FileMode.Open, FileAccess.Read, FileShare.Read))
-                                    //{
-                                    //    FileStream fs = new FileStream(remainingItems, FileMode.Open, FileAccess.ReadWrite);
-                                    //    fileStream.SetLength(fs.Length);
-                                    //    int bytesRead = -1;
-                                    //    byte[] bytes = new byte[bufferSize];
-
-                                    //    while ((bytesRead = fs.Read(bytes, 0, bufferSize)) > 0)
-                                    //    {
-                                    //        fileStream.Write(bytes, 0, bytesRead);
-                                    //    }
-
-                                    //    fs.Flush();
-                                    //    fs.Close();
-                                    //    fs.Dispose();
-                                    //}
-
-
-                                    ////////////////////////////////////////////////////////////////
-
-                                    //long fileSize = 0;// your file size that you are going to receive it.
-
-                                    //FileInfo fileInfo = new FileInfo(remainingItems);
-
-                                    //fileSize = fileInfo.Length;
-
-                                    //using (var networkStream = new NetworkStream(socket))
-                                    //using (FileStream fs = new FileStream(Path.GetFileName(remainingItems), FileMode.Create, FileAccess.Write))
-                                    //{
-                                    //    int count = 0;
-                                    //    long sum = 0;   //sum here is the total of received bytes.
-                                    //    byte[] data = new byte[1024 * 8];  //8Kb buffer .. you might use a smaller size also.
-                                    //    while (sum < fileSize)
-                                    //    {
-                                    //        if (networkStream.DataAvailable)
-                                    //        {
-                                    //            {
-                                    //                count = networkStream.Read(data, 0, data.Length);
-                                    //                fs.Write(data, 0, count);
-                                    //                sum += count;
-                                    //            }
-                                    //        }
-                                    //    }
-                                    //}
+                                 
 
                                     Guid guid1 = Guid.NewGuid();
 
@@ -1080,7 +1032,7 @@ namespace Grumbler_chat__Client_.View_Models
 
                                     string[] words = Path.GetFileName(remainingItems).Split('-');
 
-                                    //      label.Content = $"\n {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n";
+                               
 
 
 
