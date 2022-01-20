@@ -241,9 +241,6 @@ namespace Grumbler_chat_Server.View_Models
 
 
 
-
-
-
                     for (int i = 0; i < ServerMainWindows.UserListbox.SelectedItems.Count; i++)
                     {
                         string t = ServerMainWindows.UserListbox.SelectedItems[i].ToString();
@@ -607,6 +604,7 @@ namespace Grumbler_chat_Server.View_Models
         {
             try
             {
+
                 byte[] data = Encoding.UTF8.GetBytes(v);
                 socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
                 serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
@@ -868,9 +866,6 @@ namespace Grumbler_chat_Server.View_Models
                                                 TextBlock textBlock = new TextBlock();
 
 
-
-
-
                                                 textBlock.Text = "\n \n " + firstItem + " -> " + cli + "\n" + "\n";
 
                                                 textBlock.TextWrapping = TextWrapping.WrapWithOverflow;
@@ -881,11 +876,7 @@ namespace Grumbler_chat_Server.View_Models
 
 
 
-
-
-
                                                 grid.Children.Add(textBlock);
-
 
 
 
@@ -964,9 +955,7 @@ namespace Grumbler_chat_Server.View_Models
 
                                                 label.Content = $"\n {firstItem} -> {cli} \n";
 
-                                                // System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
-
-
+                                          
 
                                                 border.Margin = new Thickness(5, 5, 5, 5);
                                                 border.BorderBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 113, 88, 190));
