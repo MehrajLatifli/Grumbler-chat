@@ -25,6 +25,7 @@ namespace FileHelper_ClassLibrary
 
             try
             {
+                Task.Run(() => {
                 using (var networkStream = new NetworkStream(socket))
                 {
                     var header = new byte[4];
@@ -66,6 +67,8 @@ namespace FileHelper_ClassLibrary
 
                 }
 
+                });
+
 
             }
             catch (Exception)
@@ -79,38 +82,41 @@ namespace FileHelper_ClassLibrary
 
             try
             {
-                using (var networkStream = new NetworkStream(socket))
+                Task.Run(() =>
                 {
-                    var header = new byte[4];
-                    var bytesLeft = 4;
-                    var offset = 0;
-
-                    while (bytesLeft > 0)
+                    using (var networkStream = new NetworkStream(socket))
                     {
-                        var bytesRead = networkStream.Read(header, offset, bytesLeft);
-                        offset += bytesRead;
-                        bytesLeft -= bytesRead;
+                        var header = new byte[4];
+                        var bytesLeft = 4;
+                        var offset = 0;
+
+                        while (bytesLeft > 0)
+                        {
+                            var bytesRead = networkStream.Read(header, offset, bytesLeft);
+                            offset += bytesRead;
+                            bytesLeft -= bytesRead;
+                        }
+
+                        bytesLeft = BitConverter.ToInt32(header, 0);
+                        offset = 0;
+                        var fileContents = new byte[bytesLeft];
+
+                        while (bytesLeft > 0)
+                        {
+                            var bytesRead = networkStream.Read(fileContents, offset, bytesLeft);
+                            offset += bytesRead;
+                            bytesLeft -= bytesRead;
+                        }
+
+
+
+                        File.WriteAllBytes($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(filename)}", fileContents);
+
+
+
+
                     }
-
-                    bytesLeft = BitConverter.ToInt32(header, 0);
-                    offset = 0;
-                    var fileContents = new byte[bytesLeft];
-
-                    while (bytesLeft > 0)
-                    {
-                        var bytesRead = networkStream.Read(fileContents, offset, bytesLeft);
-                        offset += bytesRead;
-                        bytesLeft -= bytesRead;
-                    }
-
-
-
-                    File.WriteAllBytes($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(filename)}", fileContents);
-
-
-
-
-                }
+                });
 
 
             }
@@ -124,16 +130,20 @@ namespace FileHelper_ClassLibrary
         {
             try
             {
-                using (var networkStream = new NetworkStream(socket))
+
+                Task.Run(() =>
                 {
-                    var bytesToSend = File.ReadAllBytes(filename);
-                    var header = BitConverter.GetBytes(bytesToSend.Length);
-                    networkStream.Write(header, 0, header.Length);
-                    networkStream.Write(bytesToSend, 0, bytesToSend.Length);
+                    using (var networkStream = new NetworkStream(socket))
+                    {
+                        var bytesToSend = File.ReadAllBytes(filename);
+                        var header = BitConverter.GetBytes(bytesToSend.Length);
+                        networkStream.Write(header, 0, header.Length);
+                        networkStream.Write(bytesToSend, 0, bytesToSend.Length);
 
 
 
-                }
+                    }
+                });
             }
             catch (Exception)
             {

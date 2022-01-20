@@ -892,87 +892,94 @@ namespace Grumbler_chat__Client_.View_Models
 
 
 
-                                    Guid guid = Guid.NewGuid();
+                                        Guid guid = Guid.NewGuid();
 
-                                    string savefile = $"../../DataClient/{guid}.{Path.GetExtension(remainingItems)}";
+                                        string savefile = $"../../DataClient/{guid}.{Path.GetExtension(remainingItems)}";
 
-                                    int bufferSize = 10002400;
+                                        int bufferSize = 10002400;
 
-                                 
+
                                         Guid guid1 = Guid.NewGuid();
 
-                                        Thread.Sleep(500);
 
-                                        Task.Run(() => {
-
+                                
 
                                             FileHelper.ReceiveFileClient(socket, remainingItems);
 
                                             Thread.Sleep(500);
-                                        });
+
+
 
                               
 
 
-                                    images.Source = new BitmapImage(new Uri(Path.GetFullPath("../../Images/images.png")));
-                                    images.Width = 150;
-                                    images.Height = 150;
 
-                                    images.Stretch = Stretch.Fill;
+                                            images.Source = new BitmapImage(new Uri(Path.GetFullPath("../../Images/images.png")));
+                                  
 
-                                    images.Margin = new Thickness(5, 5, 5, 5);
+                                            images.Width = 150;
+                                            images.Height = 150;
 
-                                    System.Windows.Controls.Label labelPhoto = new System.Windows.Controls.Label();
-                                    labelPhoto.Height = 90;
+                                            images.Stretch = Stretch.Fill;
 
+                                            images.Margin = new Thickness(5, 5, 5, 5);
 
-                                    label.Height = 60;
-
-                                    label.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
+                                            System.Windows.Controls.Label labelPhoto = new System.Windows.Controls.Label();
+                                            labelPhoto.Height = 90;
 
 
+                                            label.Height = 60;
 
-                                    string[] words = Path.GetFileName(remainingItems).Split('-');
-
-
-                                    label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}";
+                                            label.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
 
 
 
+                                            string[] words = Path.GetFileName(remainingItems).Split('-');
+
+
+                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]} \n";
 
 
 
-                                    border.Margin = new Thickness(5, 5, 5, 5);
-                                    border.BorderBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 113, 88, 190));
-                                    border.BorderThickness = new Thickness(10);
-                                    border.CornerRadius = new CornerRadius(15);
-
-                                    border.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
-
-                                    border.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
 
 
-                                    RowDefinition rowDefinition = new RowDefinition();
 
-                                    RowDefinition rowDefinition2 = new RowDefinition();
+                                            border.Margin = new Thickness(5, 5, 5, 5);
+                                            border.BorderBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 113, 88, 190));
+                                            border.BorderThickness = new Thickness(10);
+                                            border.CornerRadius = new CornerRadius(15);
 
-                                    grid.RowDefinitions.Add(rowDefinition);
-                                    grid.RowDefinitions.Add(rowDefinition2);
+                                            border.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
 
-                                    Grid.SetRow(label, 0);
-                                    Grid.SetRow(images, 1);
-
-                                    grid.Children.Add(label);
-                                    grid.Children.Add(images);
-
-                                    border.Child = grid;
+                                            border.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
 
 
-                                    ClientMainWindows.HistoryListbox.Items.Add(border);
+                                            RowDefinition rowDefinition = new RowDefinition();
+
+                                            RowDefinition rowDefinition2 = new RowDefinition();
+
+                                            grid.RowDefinitions.Add(rowDefinition);
+                                            grid.RowDefinitions.Add(rowDefinition2);
+
+                                            Grid.SetRow(label, 0);
+                                            Grid.SetRow(images, 1);
+
+                                            grid.Children.Add(label);
+                                            grid.Children.Add(images);
+
+                                            border.Child = grid;
+
+
+                                            ClientMainWindows.HistoryListbox.Items.Add(border);
+                             
+                                    
+
                                 }
 
                                 else
                                 {
+
+
 
                                     System.Windows.Controls.Grid grid = new System.Windows.Controls.Grid();
 
@@ -993,7 +1000,7 @@ namespace Grumbler_chat__Client_.View_Models
 
                                     int bufferSize = 10002400;
 
-                                 
+
 
                                     Guid guid1 = Guid.NewGuid();
 
@@ -1002,89 +1009,80 @@ namespace Grumbler_chat__Client_.View_Models
 
 
 
-                             
-
                                
+
+
 
                                         FileHelper.ReceiveFileClient(socket, remainingItems);
 
-                
-                               
+                                        Thread.Sleep(500);
+
+
+                                     
+
+
+                                            images.Source = new BitmapImage(new Uri(Path.GetFullPath("../../Images/files.png")));
+
+
+
+                                        images.Width = 175;
+                                            images.Height = 175;
+
+                                            images.Stretch = Stretch.Fill;
+
+                                            images.Margin = new Thickness(5, 5, 5, 5);
+
+                                            System.Windows.Controls.Label labelPhoto = new System.Windows.Controls.Label();
+                                            labelPhoto.Height = 90;
+
+
+                                            label.Height = 75;
+
+                                            label.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
+
+
+                                            string[] words = Path.GetFileName(remainingItems).Split('-');
 
 
 
 
-                                    images.Source = new BitmapImage(new Uri(Path.GetFullPath("../../Images/files.png")));
-                                    images.Width = 175;
-                                    images.Height = 175;
 
-                                    images.Stretch = Stretch.Fill;
+                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]} \n";
 
-                                    images.Margin = new Thickness(5, 5, 5, 5);
-
-                                    System.Windows.Controls.Label labelPhoto = new System.Windows.Controls.Label();
-                                    labelPhoto.Height = 90;
-
-
-                                    label.Height = 75;
-
-                                    label.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
-
-
-                                    string[] words = Path.GetFileName(remainingItems).Split('-');
-
-                               
+                                            System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
 
 
 
-                                    if (remainingItems.Length <= 5)
-                                    {
-                                        label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {Path.GetFileName(remainingItems)}";
-                                    }
+                                            border.Margin = new Thickness(5, 5, 5, 5);
+                                            border.BorderBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 113, 88, 190));
+                                            border.BorderThickness = new Thickness(10);
+                                            border.CornerRadius = new CornerRadius(15);
 
-                                    else
-                                    {
+                                            border.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
 
-                                        if (ClientMainWindows.UserListbox.SelectedItem != null)
-                                        {
-
-                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}...{Path.GetExtension(remainingItems)} ";
-                                        }
+                                            border.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
 
 
-                                    }
+                                            RowDefinition rowDefinition = new RowDefinition();
 
-                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
+                                            RowDefinition rowDefinition2 = new RowDefinition();
 
+                                            grid.RowDefinitions.Add(rowDefinition);
+                                            grid.RowDefinitions.Add(rowDefinition2);
 
+                                            Grid.SetRow(label, 0);
+                                            Grid.SetRow(images, 1);
 
-                                    border.Margin = new Thickness(5, 5, 5, 5);
-                                    border.BorderBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 113, 88, 190));
-                                    border.BorderThickness = new Thickness(10);
-                                    border.CornerRadius = new CornerRadius(15);
+                                            grid.Children.Add(label);
+                                            grid.Children.Add(images);
 
-                                    border.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
-
-                                    border.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
-
-
-                                    RowDefinition rowDefinition = new RowDefinition();
-
-                                    RowDefinition rowDefinition2 = new RowDefinition();
-
-                                    grid.RowDefinitions.Add(rowDefinition);
-                                    grid.RowDefinitions.Add(rowDefinition2);
-
-                                    Grid.SetRow(label, 0);
-                                    Grid.SetRow(images, 1);
-
-                                    grid.Children.Add(label);
-                                    grid.Children.Add(images);
-
-                                    border.Child = grid;
+                                            border.Child = grid;
 
 
-                                    ClientMainWindows.HistoryListbox.Items.Add(border);
+                                            ClientMainWindows.HistoryListbox.Items.Add(border);
+
+
+                                  
                                 }
 
 

@@ -949,9 +949,9 @@ namespace Grumbler_chat_Server.View_Models
                                                 Thread.Sleep(200);
 
 
-                                                images.Source = new BitmapImage(new Uri($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(remainingItems)}"));
-                                                images.Width = 200;
-                                                images.Height = 200;
+                                                images.Source = new BitmapImage(new Uri(Path.GetFullPath("../../Images/images.png")));
+                                                images.Width = 150;
+                                                images.Height = 150;
 
                                                 images.Stretch = Stretch.Fill;
 
@@ -967,9 +967,16 @@ namespace Grumbler_chat_Server.View_Models
 
 
 
-                                                label.Content = $"\n {firstItem} -> {cli} \n";
+                                       
 
-                                          
+
+
+                                                string[] words = Path.GetFileName(remainingItems).Split('-');
+
+
+                                                label.Content = $" {firstItem} -> {cli} \n {words[0]} \n";
+
+
 
                                                 border.Margin = new Thickness(5, 5, 5, 5);
                                                 border.BorderBrush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 113, 88, 190));
@@ -1023,6 +1030,7 @@ namespace Grumbler_chat_Server.View_Models
 
                                                 FileHelper.ReceiveFileServer(socket, remainingItems);
 
+                                                Thread.Sleep(200);
 
 
                                                 images.Source = new BitmapImage(new Uri(Path.GetFullPath("../../Images/files.png")));
@@ -1043,10 +1051,11 @@ namespace Grumbler_chat_Server.View_Models
 
 
 
-                                                label.Content = $"\n {firstItem} -> {cli} \n  {remainingItems}";
-
 
                                                 string[] words = Path.GetFileName(remainingItems).Split('-');
+
+
+                                                label.Content = $" {firstItem} -> {cli} \n {words[0]} \n";
 
 
 
