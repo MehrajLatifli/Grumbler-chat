@@ -921,9 +921,9 @@ namespace Grumbler_chat__Client_.View_Models
                                     }
 
 
-                                    images.Source = new BitmapImage(new Uri($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(remainingItems)}"));
-                                    images.Width = 200;
-                                    images.Height = 200;
+                                    images.Source = new BitmapImage(new Uri(Path.GetFullPath("../../Images/images.png")));
+                                    images.Width = 175;
+                                    images.Height = 175;
 
                                     images.Stretch = Stretch.Fill;
 
@@ -939,9 +939,29 @@ namespace Grumbler_chat__Client_.View_Models
 
 
 
-                                    label.Content = $"\n {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n";
+                                    string[] words = Path.GetFileName(remainingItems).Split('-');
 
-                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(savefile)}");
+
+
+                                    if (remainingItems.Length <= 5)
+                                    {
+                                        label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {Path.GetFileName(remainingItems)}";
+                                    }
+
+                                    else
+                                    {
+
+                                        if (ClientMainWindows.UserListbox.SelectedItem != null)
+                                        {
+
+                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}...{Path.GetExtension(remainingItems)} ";
+                                        }
+
+
+                                    }
+
+                     
+
 
 
 
@@ -1019,8 +1039,8 @@ namespace Grumbler_chat__Client_.View_Models
 
 
                                     images.Source = new BitmapImage(new Uri(Path.GetFullPath("../../Images/files.png")));
-                                    images.Width = 180;
-                                    images.Height = 180;
+                                    images.Width = 175;
+                                    images.Height = 175;
 
                                     images.Stretch = Stretch.Fill;
 
@@ -1041,9 +1061,9 @@ namespace Grumbler_chat__Client_.View_Models
 
 
 
-                                    if (ClientMainWindows.MessageTextBox.Text.Length <= 5)
+                                    if (remainingItems.Length <= 5)
                                     {
-                                        label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {Path.GetFileName(savefile)}";
+                                        label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {Path.GetFileName(remainingItems)}";
                                     }
 
                                     else
@@ -1052,13 +1072,13 @@ namespace Grumbler_chat__Client_.View_Models
                                         if (ClientMainWindows.UserListbox.SelectedItem != null)
                                         {
 
-                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}...{Path.GetExtension(savefile)} ";
+                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}...{Path.GetExtension(remainingItems)} ";
                                         }
 
 
                                     }
 
-                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(savefile)}");
+                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
 
 
 
