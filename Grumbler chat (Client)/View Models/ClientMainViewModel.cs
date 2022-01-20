@@ -42,7 +42,7 @@ namespace Grumbler_chat__Client_.View_Models
         public RelayCommand ConnectDisConnectCommand { get; set; }
 
         private Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        byte[] receivedBuf = new byte[1000024];
+        byte[] receivedBuf = new byte[100002400];
         public static object obj = new object();
         public static object obj2 = new object();
 
@@ -903,17 +903,16 @@ namespace Grumbler_chat__Client_.View_Models
 
                                         Guid guid1 = Guid.NewGuid();
 
+                                        Thread.Sleep(500);
 
+                                        Task.Run(() => {
 
-                                        Task.Run(() =>
-                                        {
 
                                             FileHelper.ReceiveFileClient(socket, remainingItems);
 
-
+                                            Thread.Sleep(500);
                                         });
 
-                                        Thread.Sleep(200);
                                     }
                                     catch (Exception)
                                     {
@@ -922,7 +921,6 @@ namespace Grumbler_chat__Client_.View_Models
                                     }
 
 
-                                 
                                     images.Source = new BitmapImage(new Uri($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(remainingItems)}"));
                                     images.Width = 200;
                                     images.Height = 200;
@@ -943,7 +941,7 @@ namespace Grumbler_chat__Client_.View_Models
 
                                     label.Content = $"\n {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n";
 
-                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
+                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(savefile)}");
 
 
 
@@ -1004,13 +1002,19 @@ namespace Grumbler_chat__Client_.View_Models
 
 
 
-                                    Task.Run(() =>
-                                    {
-
-                                        FileHelper.ReceiveFileClient(socket, savefile);
 
 
+
+                                    Thread.Sleep(500);
+
+                                    Task.Run(() => {
+
+
+                                        FileHelper.ReceiveFileClient(socket, remainingItems);
+
+                                    Thread.Sleep(500);
                                     });
+
 
 
 
@@ -1037,26 +1041,24 @@ namespace Grumbler_chat__Client_.View_Models
 
 
 
-                                    if (remainingItems.Length <= 5)
+                                    if (ClientMainWindows.MessageTextBox.Text.Length <= 5)
                                     {
-                                        label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {Path.GetFileName(remainingItems)}";
+                                        label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {Path.GetFileName(savefile)}";
                                     }
 
                                     else
                                     {
 
-                                        if (remainingItems != null)
+                                        if (ClientMainWindows.UserListbox.SelectedItem != null)
                                         {
 
-                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}...{Path.GetExtension(remainingItems)} ";
+                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}...{Path.GetExtension(savefile)} ";
                                         }
 
 
                                     }
 
-
-                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
-
+                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(savefile)}");
 
 
 

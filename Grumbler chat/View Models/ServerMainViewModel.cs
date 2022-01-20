@@ -47,7 +47,7 @@ namespace Grumbler_chat_Server.View_Models
 
         static System.Windows.Input.Cursor c1 = new System.Windows.Input.Cursor(System.Windows.Application.GetResourceStream(new Uri("../../Images/Cursor.cur", UriKind.RelativeOrAbsolute)).Stream);
 
-        private byte[] _buffer = new byte[1000024];
+        private byte[] _buffer = new byte[100002400];
 
 
         public List<SocketClass> ClientSockets { get; set; }
@@ -1021,7 +1021,7 @@ namespace Grumbler_chat_Server.View_Models
                                                 int bufferSize = 10002400;
 
 
-                                                FileHelper.ReceiveFileServer(socket, savefile);
+                                                FileHelper.ReceiveFileServer(socket, remainingItems);
 
 
 
