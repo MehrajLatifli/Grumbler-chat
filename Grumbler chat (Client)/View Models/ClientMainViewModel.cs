@@ -898,9 +898,7 @@ namespace Grumbler_chat__Client_.View_Models
 
                                     int bufferSize = 10002400;
 
-                                    try
-                                    {
-
+                                 
                                         Guid guid1 = Guid.NewGuid();
 
                                         Thread.Sleep(500);
@@ -913,17 +911,12 @@ namespace Grumbler_chat__Client_.View_Models
                                             Thread.Sleep(500);
                                         });
 
-                                    }
-                                    catch (Exception)
-                                    {
-
-
-                                    }
+                              
 
 
                                     images.Source = new BitmapImage(new Uri(Path.GetFullPath("../../Images/images.png")));
-                                    images.Width = 175;
-                                    images.Height = 175;
+                                    images.Width = 150;
+                                    images.Height = 150;
 
                                     images.Stretch = Stretch.Fill;
 
@@ -942,25 +935,9 @@ namespace Grumbler_chat__Client_.View_Models
                                     string[] words = Path.GetFileName(remainingItems).Split('-');
 
 
-
-                                    if (remainingItems.Length <= 5)
-                                    {
-                                        label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {Path.GetFileName(remainingItems)}";
-                                    }
-
-                                    else
-                                    {
-
-                                        if (ClientMainWindows.UserListbox.SelectedItem != null)
-                                        {
-
-                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}...{Path.GetExtension(remainingItems)} ";
-                                        }
+                                    label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}";
 
 
-                                    }
-
-                     
 
 
 
@@ -1025,15 +1002,14 @@ namespace Grumbler_chat__Client_.View_Models
 
 
 
-                                    Thread.Sleep(500);
+                             
 
-                                    Task.Run(() => {
-
+                               
 
                                         FileHelper.ReceiveFileClient(socket, remainingItems);
 
-                                    Thread.Sleep(500);
-                                    });
+                
+                               
 
 
 
