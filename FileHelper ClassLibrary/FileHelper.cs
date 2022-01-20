@@ -31,7 +31,6 @@ namespace FileHelper_ClassLibrary
                     var bytesLeft = 4;
                     var offset = 0;
 
-                    // have to repeat as messages can come in chunks
                     while (bytesLeft > 0)
                     {
                         var bytesRead = networkStream.Read(header, offset, bytesLeft);
@@ -43,7 +42,6 @@ namespace FileHelper_ClassLibrary
                     offset = 0;
                     var fileContents = new byte[bytesLeft];
 
-                    // have to repeat as messages can come in chunks
                     while (bytesLeft > 0)
                     {
                         var bytesRead = networkStream.Read(fileContents, offset, bytesLeft);
@@ -52,7 +50,6 @@ namespace FileHelper_ClassLibrary
                     }
 
 
-                    //string mimeType = System.Web.MimeMapping.GetMimeMapping(fileContents);
 
 
 
@@ -86,7 +83,6 @@ namespace FileHelper_ClassLibrary
                     var bytesLeft = 4;
                     var offset = 0;
 
-                    // have to repeat as messages can come in chunks
                     while (bytesLeft > 0)
                     {
                         var bytesRead = networkStream.Read(header, offset, bytesLeft);
@@ -98,7 +94,6 @@ namespace FileHelper_ClassLibrary
                     offset = 0;
                     var fileContents = new byte[bytesLeft];
 
-                    // have to repeat as messages can come in chunks
                     while (bytesLeft > 0)
                     {
                         var bytesRead = networkStream.Read(fileContents, offset, bytesLeft);
@@ -107,18 +102,11 @@ namespace FileHelper_ClassLibrary
                     }
 
 
-                    //string mimeType = System.Web.MimeMapping.GetMimeMapping(fileContents);
-
-
-
-                    //File.WriteAllBytes($"{Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\"))}", fileContents);
 
                     File.WriteAllBytes($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(filename)}", fileContents);
 
 
-                    //File.WriteAllBytes($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{guid1}{Path.GetExtension(filename)}", fileContents);
 
-                    //       File.WriteAllBytes($"{Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\"))}../../DataClient/{filename} {Path.GetExtension(filename)}", fileContents);
 
                 }
 
@@ -320,43 +308,6 @@ namespace FileHelper_ClassLibrary
 
         }
 
-        public static object BinaryDeSerialize_Message()
-        {
-
-
-            if (!System.IO.File.Exists("../../../Files/Messages.bin"))
-            {
-                MessageBox.Show($"Bin error");
-            }
-
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            using (Stream fStream = File.OpenRead("../../../Files/Messages.bin"))
-            {
-                return formatter.Deserialize(fStream);
-            }
-
-        }
-
-
-
-        public static object BinaryDeSerialize_UserData()
-        {
-
-
-            if (!System.IO.File.Exists("../../../Files/Users.bin"))
-            {
-                MessageBox.Show($"Bin error");
-            }
-
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            using (Stream fStream = File.OpenRead("../../../Files/Users.bin"))
-            {
-                return formatter.Deserialize(fStream);
-            }
-
-        }
 
 
 
