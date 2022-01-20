@@ -921,9 +921,7 @@ namespace Grumbler_chat__Client_.View_Models
 
                                     }
 
-                                  
-
-
+                                 
                                     images.Source = new BitmapImage(new Uri($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(remainingItems)}"));
                                     images.Width = 200;
                                     images.Height = 200;
