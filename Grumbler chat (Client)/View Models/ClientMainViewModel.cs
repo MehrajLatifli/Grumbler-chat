@@ -183,6 +183,7 @@ namespace Grumbler_chat__Client_.View_Models
 
             });
 
+
             ConnectDisConnectCommand = new RelayCommand((sender) =>
             {
 
@@ -248,10 +249,9 @@ namespace Grumbler_chat__Client_.View_Models
 
             });
 
+
             SendMessageRightClickCommand = new RelayCommand((sender) =>
             {
-
-
 
 
                 System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
@@ -346,7 +346,7 @@ namespace Grumbler_chat__Client_.View_Models
 
                         System.Windows.Controls.Image images = new System.Windows.Controls.Image();
 
-                        System.Windows.Controls.Label label = new System.Windows.Controls.Label();
+                        System.Windows.Controls.Label label = new System.Windows.Controls.Label(); 
 
                         Border border = new Border();
 
