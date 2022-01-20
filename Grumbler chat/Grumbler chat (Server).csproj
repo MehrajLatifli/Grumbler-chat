@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C80674A-BFB8-482A-9BC4-9A328B0B3AF9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Grumbler_chat_Server</RootNamespace>
+    <AssemblyName>Grumbler chat %28Server%29</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.2\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="View Models\BaseViewModel.cs" />
+    <Compile Include="View Models\ServerMainViewModel.cs" />
+    <Compile Include="View Models\Service_UCViewModel.cs" />
+    <Compile Include="Views\ServerMainWindow.xaml.cs">
+      <DependentUpon>ServerMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\Service_UC.xaml.cs">
+      <DependentUpon>Service_UC.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Fonts\Arial Bold.ttf" />
+    <Resource Include="Fonts\Bodoni MT Bold.ttf" />
+    <Resource Include="Fonts\Cooper Black.ttf" />
+    <Resource Include="Fonts\Geotype.TTF" />
+    <Resource Include="Fonts\Symbols1-M2YY.ttf" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fonts\Open Sans Extrabold.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Dictionaries\ButtonDictionary2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dictionaries\ButtonDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dictionaries\PowerButtonDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dictionaries\ServiceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dictionaries\TextFontStyleDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ServerMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\Service_UC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BigLogo1.ico" />
+    <Resource Include="Images\BigLogo1.png" />
+    <Resource Include="Images\Cursor.cur" />
+    <Resource Include="Images\Cursor.png" />
+    <Resource Include="Images\defaultprofile.jpg" />
+    <Resource Include="Images\Logo.ico" />
+    <Resource Include="Images\logo.jpg" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Images\Logo1.ico" />
+    <Resource Include="Images\Logo1.png" />
+    <Resource Include="Images\Logo2.png" />
+    <Resource Include="Images\Logo_.png" />
+    <Resource Include="Images\MiniLogo1.png" />
+    <Resource Include="Images\powerbutton.png" />
+    <Resource Include="Images\powerbutton2.png" />
+    <Resource Include="Images\servicebutton.png" />
+    <Resource Include="Images\servicebutton2.png" />
+    <Resource Include="Views\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Logo_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\powerbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Dictionaries\powerbutton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Dictionaries\servicebutton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\servicebutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\UserControls\BigLogo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\BigLogo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="biglogo1%281%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo1 - Copy.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\UserControls\Logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\UserControls\MiniLogo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\UserControls\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\UserControls\defaultprofil.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\UserControls\defaultprofile.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\UserControls\logo2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileHelper ClassLibrary\FileHelper ClassLibrary.csproj">
+      <Project>{DF269F45-175F-4B5F-9B12-C62D72594087}</Project>
+      <Name>FileHelper ClassLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Socket ClassLibrary\Socket ClassLibrary.csproj">
+      <Project>{8A9323A9-3C1D-485E-94DB-3495F6A61D78}</Project>
+      <Name>Socket ClassLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\defaultprofil.jpg" />
+    <Resource Include="Images\files.png" />
+    <Resource Include="Images\logo2.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

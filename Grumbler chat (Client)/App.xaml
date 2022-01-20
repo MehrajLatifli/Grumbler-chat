@@ -1,0 +1,22 @@
+﻿<Application x:Class="Grumbler_chat__Client_.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Grumbler_chat__Client_"
+             StartupUri="Views/ClientMainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="Dictionaries/PowerButtonDictionary.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Dictionaries/ServiceDictionary.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Dictionaries/TextFontStyleDictionary.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Dictionaries/ButtonDictionary.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Dictionaries/ButtonDictionary2.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Dictionaries/JoinButtonDictionary.xaml"></ResourceDictionary>
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
