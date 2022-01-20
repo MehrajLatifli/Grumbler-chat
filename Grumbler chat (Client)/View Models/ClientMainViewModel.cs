@@ -827,7 +827,7 @@ namespace Grumbler_chat__Client_.View_Models
 
 
 
-                                    textBlock.Text = "\n \n " + remainingItems + "\n" + "\n";
+                                    textBlock.Text = "\n \n    " + remainingItems + "    \n" + "\n";
 
                                     textBlock.TextWrapping = TextWrapping.WrapWithOverflow;
 
@@ -837,7 +837,7 @@ namespace Grumbler_chat__Client_.View_Models
 
 
                                     label.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 113, 88, 190));
-                                    label.Content = $"\n \n {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n";
+                                    label.Content = $"\n\n  {firstItem}  -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n";
 
 
 

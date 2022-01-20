@@ -112,8 +112,8 @@
                     <Grid x:Name="ListBoxesGrid" Margin="5" Visibility="Visible">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"></RowDefinition>
-                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
                             <RowDefinition Height="1*"></RowDefinition>
                         </Grid.RowDefinitions>
 
@@ -137,11 +137,11 @@
                             <TextBox x:Name="ClientNameTextBox" Grid.Column="0" Foreground="#7158BE" Margin="5" TextWrapping="Wrap" FontSize="40" MaxLength="4" MinLines="1" Style="{StaticResource ClientTextstyle}" ScrollViewer.VerticalScrollBarVisibility="Auto"></TextBox>
 
 
-                            <Button x:Name="ConnectButton" Grid.Column="1" Margin="5"  FontSize="15" Content="Connect" Command="{Binding ConnectDisConnectCommand}" ></Button>
+                            <Button x:Name="ConnectButton" Grid.Column="1" Margin="5"   FontSize="25" Content="Connect" Command="{Binding ConnectDisConnectCommand}" ></Button>
 
                             <TextBox x:Name="MessageTextBox" Grid.Column="2" Foreground="#7158BE" Margin="5" TextWrapping="Wrap" MaxLength="250" MaxLines="250" FontSize="45" Style="{StaticResource ClientTextstyle}" ScrollViewer.VerticalScrollBarVisibility="Auto"></TextBox>
 
-                            <ToggleButton x:Name="SendMessageButton" Grid.Column="3" Margin="5" Content="Send" Style="{StaticResource ToogleButtonStyle}" Command="{Binding SendMessageCommand}">
+                            <ToggleButton x:Name="SendMessageButton" Grid.Column="3" Margin="5" FontSize="20" Content="Send" Style="{StaticResource ToogleButtonStyle}" Command="{Binding SendMessageCommand}">
 
                                 <ToggleButton.ToolTip>
                                     <TextBlock Foreground="#7158BE" FontSize="15" Text="Left-click to change. Right-click to send."></TextBlock>
