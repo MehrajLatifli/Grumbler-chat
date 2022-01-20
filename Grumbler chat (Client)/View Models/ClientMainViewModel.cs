@@ -42,7 +42,7 @@ namespace Grumbler_chat__Client_.View_Models
         public RelayCommand ConnectDisConnectCommand { get; set; }
 
         private Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        byte[] receivedBuf = new byte[10000240];
+        byte[] receivedBuf = new byte[1000024000];
         public static object obj = new object();
         public static object obj2 = new object();
 
@@ -942,7 +942,7 @@ namespace Grumbler_chat__Client_.View_Models
 
                                     label.Content = $"\n {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n";
 
-                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(savefile)}");
+                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
 
 
 
@@ -1036,24 +1036,26 @@ namespace Grumbler_chat__Client_.View_Models
 
 
 
-                                    if (ClientMainWindows.MessageTextBox.Text.Length <= 5)
+                                    if (remainingItems.Length <= 5)
                                     {
-                                        label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {Path.GetFileName(savefile)}";
+                                        label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {Path.GetFileName(remainingItems)}";
                                     }
 
                                     else
                                     {
 
-                                        if (ClientMainWindows.UserListbox.SelectedItem != null)
+                                        if (remainingItems != null)
                                         {
 
-                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}...{Path.GetExtension(savefile)} ";
+                                            label.Content = $" {firstItem} -> {ClientMainWindows.ClientNameTextBox.Text.ToString()} \n {words[0]}...{Path.GetExtension(remainingItems)} ";
                                         }
 
 
                                     }
 
-                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(savefile)}");
+
+                                    System.Windows.MessageBox.Show($"{Path.GetFullPath(remainingItems)}");
+
 
 
 
@@ -1167,7 +1169,21 @@ namespace Grumbler_chat__Client_.View_Models
 
                                     System.Windows.Forms.MessageBox.Show($" IP address: {words[0]} Port: {words[1]}");
 
+                                    try
+                                    {
                                     clientSocket.Connect(IPAddress.Parse($"{words[0]}"), int.Parse(words[1]));
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                        MessageBox.Show($"{ex.Message}");
+
+
+                                        Thread.Sleep(1000);
+
+                                        Environment.Exit(1);
+                                    }
                                 }
                             }
                         }

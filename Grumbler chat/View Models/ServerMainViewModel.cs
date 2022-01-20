@@ -47,7 +47,7 @@ namespace Grumbler_chat_Server.View_Models
 
         static System.Windows.Input.Cursor c1 = new System.Windows.Input.Cursor(System.Windows.Application.GetResourceStream(new Uri("../../Images/Cursor.cur", UriKind.RelativeOrAbsolute)).Stream);
 
-        private byte[] _buffer = new byte[1000024];
+        private byte[] _buffer = new byte[1000024000];
 
 
         public List<SocketClass> ClientSockets { get; set; }
@@ -171,8 +171,7 @@ namespace Grumbler_chat_Server.View_Models
 
             ConnectDisConnectCommand = new RelayCommand((sender) =>
             {
-                System.Windows.MessageBox.Show($"{Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\"))}DataServer");
-
+           
                 System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
                 {
 
@@ -709,9 +708,24 @@ namespace Grumbler_chat_Server.View_Models
 
                                 System.Windows.Forms.MessageBox.Show($"{words[0]} {words[1]}");
 
-                                serverSocket.Bind(new IPEndPoint(IPAddress.Parse($"{words[0]}"), int.Parse(words[1])));
-                                serverSocket.Listen(5);
-                                serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
+                                try
+                                {
+                                    serverSocket.Bind(new IPEndPoint(IPAddress.Parse($"{words[0]}"), int.Parse(words[1])));
+                                    serverSocket.Listen(5);
+                                    serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
+
+                                }
+                                catch (Exception ex)
+                                {
+
+                                    System.Windows.MessageBox.Show($"{ex.Message}");
+
+                                    Thread.Sleep(1000);
+
+                                    Environment.Exit(1);
+                                }
+
+                 
                             }
                         }
                     }
