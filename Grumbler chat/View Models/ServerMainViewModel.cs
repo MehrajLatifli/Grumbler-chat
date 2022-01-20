@@ -47,7 +47,7 @@ namespace Grumbler_chat_Server.View_Models
 
         static System.Windows.Input.Cursor c1 = new System.Windows.Input.Cursor(System.Windows.Application.GetResourceStream(new Uri("../../Images/Cursor.cur", UriKind.RelativeOrAbsolute)).Stream);
 
-        private byte[] _buffer = new byte[1000024000];
+        private byte[] _buffer = new byte[1000024];
 
 
         public List<SocketClass> ClientSockets { get; set; }
@@ -949,7 +949,7 @@ namespace Grumbler_chat_Server.View_Models
                                                 Thread.Sleep(200);
 
 
-                                                images.Source = new BitmapImage(new Uri(Path.GetFullPath(remainingItems)));
+                                                images.Source = new BitmapImage(new Uri($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(remainingItems)}"));
                                                 images.Width = 200;
                                                 images.Height = 200;
 

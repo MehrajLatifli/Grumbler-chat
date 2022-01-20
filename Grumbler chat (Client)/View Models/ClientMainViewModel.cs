@@ -42,7 +42,7 @@ namespace Grumbler_chat__Client_.View_Models
         public RelayCommand ConnectDisConnectCommand { get; set; }
 
         private Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        byte[] receivedBuf = new byte[1000024000];
+        byte[] receivedBuf = new byte[1000024];
         public static object obj = new object();
         public static object obj2 = new object();
 
@@ -920,6 +920,8 @@ namespace Grumbler_chat__Client_.View_Models
 
 
                                     }
+
+                                  
 
 
                                     images.Source = new BitmapImage(new Uri($"{Path.GetPathRoot(Environment.SystemDirectory)}Users\\{Environment.UserName}\\{Environment.SpecialFolder.Desktop}\\{Path.GetFileName(remainingItems)}"));
