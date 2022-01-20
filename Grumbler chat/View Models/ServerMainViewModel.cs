@@ -1215,9 +1215,11 @@ namespace Grumbler_chat_Server.View_Models
         {
             try
             {
+
                 byte[] data = Encoding.UTF8.GetBytes(txt);
                 socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
                 serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
+                
 
             }
             catch (Exception)
