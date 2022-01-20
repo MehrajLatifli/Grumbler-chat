@@ -55,11 +55,9 @@ namespace Grumbler_chat_Server.View_Models
         private Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         long sendMessagebuttoncounter = 0;
-        long countentbuttoncounter = 0;
         long contentcontrolcounter = 0;
 
         private object selectedViewModel;
-        private object selectedViewModel2;
 
         public object SelectedViewModel
         {
