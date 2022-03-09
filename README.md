@@ -1,7 +1,7 @@
 # Grumbler-chat
 
 
-Example for transfer data (as message and as file) between clients and server.  
+Example for transfer data (as message and as file) between clients (client to client) and server (server to client).  
 Asynchronous TCP sockets.
 
 
