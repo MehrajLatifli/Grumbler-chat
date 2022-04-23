@@ -5,6 +5,4 @@ Example for transfer data (as message and as file) between clients (client to cl
 Asynchronous TCP sockets.
 
 
-
-
-
+[![Grumbler chat](https://img.youtube.com/vi/gIH4632MDUs/0.jpg)](http://www.youtube.com/watch?v=gIH4632MDUs)
